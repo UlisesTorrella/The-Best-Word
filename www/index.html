@@ -17,6 +17,8 @@
     </script>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/index.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
@@ -27,18 +29,18 @@
   <body ng-app="BestWord" style="background-color:#2BC22B;">
     <div style="background-color:#2BC22B;">
       <md-card ng-controller="MainController" >
+        <h2 class="bestword">{{ bestword.word }} <i class="fa fa-arrow-down" aria-hidden="true" ng-click="downvote()"></i> {{ bestword.score }} <i class="fa fa-arrow-up" aria-hidden="true" ng-click="upvote()"></i></h2>
        <img src="img/logo.png" class="md-card-image" alt="image caption">
+      <h4>Because "{{ bestword.author }}" says so</h4>
        <md-card-content>
-          <h2 style="border: solid;border-color: green;text-align: center;">{{ bestword.word }} <i class="fa fa-arrow-down" aria-hidden="true" ng-click="downvote()"></i> {{ bestword.score }} <i class="fa fa-arrow-up" aria-hidden="true" ng-click="upvote()"></i></h2>
-          <h4>Suggested by: {{ bestword.author }}</h4>
-
+          <h4>Is this the Best Word?</h4>
           <md-input-container>
-            <label>Suggest a New Word</label>
+            <label>No! the best word is</label>
             <input name="suggestion" ng-model="suggestion" required>
           </md-input-container>
 
           <md-input-container>
-            <label>Suggested by:</label>
+            <label>Because {{ user }} says so</label>
             <input name="suggestion" ng-model="user" required>
           </md-input-container>
         <md-button class="md-primary md-raised" ng-click="submit()" ng-disabled="bestword.score != 0"><p ng-if="bestword.score != 0">It needs to have exactly 0 votes
